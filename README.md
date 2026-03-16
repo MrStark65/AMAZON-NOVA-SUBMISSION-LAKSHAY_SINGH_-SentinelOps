@@ -8,7 +8,7 @@ Autonomous Cloud Risk, Cost & Failure Prediction System
 ```bash
 cd backend
 pip install -r requirements.txt
-cp .env.example .env   # add your OPENAI_API_KEY (optional — works in demo mode without it)
+cp .env.example .env   
 uvicorn main:app --reload --port 8000
 ```
 
