@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { clsx } from "clsx";
 import {
   LayoutDashboard, Server, AlertTriangle, ShieldAlert,
@@ -8,28 +9,31 @@ import {
 
 export type View = "dashboard" | "infrastructure" | "predictions" | "security" | "costs" | "assistant" | "voice" | "agent";
 
-const sections = [
+type SectionItem = { id: View; label: string; Icon: React.ElementType };
+type Section = { label: string; items: SectionItem[] };
+
+const sections: Section[] = [
   {
     label: "Monitoring",
     items: [
-      { id: "dashboard"      as View, label: "Dashboard",         icon: <LayoutDashboard size={15} /> },
-      { id: "infrastructure" as View, label: "Infrastructure",     icon: <Server size={15} /> },
-      { id: "predictions"    as View, label: "Failure Prediction", icon: <AlertTriangle size={15} /> },
+      { id: "dashboard",      label: "Dashboard",         Icon: LayoutDashboard },
+      { id: "infrastructure", label: "Infrastructure",     Icon: Server },
+      { id: "predictions",    label: "Failure Prediction", Icon: AlertTriangle },
     ],
   },
   {
     label: "Security & Cost",
     items: [
-      { id: "security" as View, label: "Security Risks",    icon: <ShieldAlert size={15} /> },
-      { id: "costs"    as View, label: "Cost Optimization", icon: <DollarSign size={15} /> },
+      { id: "security", label: "Security Risks",    Icon: ShieldAlert },
+      { id: "costs",    label: "Cost Optimization", Icon: DollarSign },
     ],
   },
   {
     label: "AI Features",
     items: [
-      { id: "assistant" as View, label: "AI Assistant", icon: <Bot size={15} /> },
-      { id: "voice"     as View, label: "Voice AI",     icon: <Mic size={15} /> },
-      { id: "agent"     as View, label: "Agent Automation", icon: <Zap size={15} /> },
+      { id: "assistant", label: "AI Assistant",      Icon: Bot },
+      { id: "voice",     label: "Voice AI",          Icon: Mic },
+      { id: "agent",     label: "Agent Automation",  Icon: Zap },
     ],
   },
 ];
@@ -42,7 +46,7 @@ interface SidebarProps {
 
 export function Sidebar({ active, onChange, criticalCount = 0 }: SidebarProps) {
   return (
-    <aside className="w-56 shrink-0 flex flex-col bg-[#0d1117] border-r border-gray-800/80 h-screen sticky top-0">
+    <aside suppressHydrationWarning className="w-56 shrink-0 flex flex-col bg-[#0d1117] border-r border-gray-800/80 h-screen sticky top-0">
       {/* Logo */}
       <div className="flex items-center gap-2.5 px-4 py-4 border-b border-gray-800/80">
         <div className="relative">
@@ -84,7 +88,7 @@ export function Sidebar({ active, onChange, criticalCount = 0 }: SidebarProps) {
                     )}
                   >
                     <span className={clsx("shrink-0", isActive ? "text-blue-400" : "text-gray-600 group-hover:text-gray-400")}>
-                      {item.icon}
+                      <item.Icon size={15} />
                     </span>
                     <span className="flex-1 text-left">{item.label}</span>
                     {isCritical && (
