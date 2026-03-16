@@ -55,7 +55,7 @@ export function DashboardView({ data }: Props) {
       )}
 
       {/* Top row: stat cards + health ring */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 fade-in-up">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 fade-in-up">
         <StatCard label="Healthy Nodes"  value={summary.healthyNodes}  icon={<Server size={16} />} color="green"  glow />
         <StatCard label="Warning Nodes"  value={summary.warningNodes}  icon={<Server size={16} />} color="yellow" />
         <StatCard label="Critical Nodes" value={summary.criticalNodes} icon={<Server size={16} />} color="red"    glow />
@@ -64,7 +64,7 @@ export function DashboardView({ data }: Props) {
       </div>
 
       {/* Health ring + metrics chart */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 fade-in-up">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 fade-in-up">
         <Card className="flex items-center justify-center py-6">
           <HealthRing
             healthy={summary.healthyNodes}
@@ -119,7 +119,7 @@ export function DashboardView({ data }: Props) {
       </div>
 
       {/* Predictions + Security */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 fade-in-up">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 fade-in-up">
         <Card>
           <div className="flex items-center gap-2 mb-3">
             <div className="p-1 rounded bg-yellow-500/10">

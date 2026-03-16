@@ -20,7 +20,7 @@ export function CostsView({ data }: Props) {
     <div className="space-y-4">
       {/* Hero waste card */}
       <Card glow="red" className="bg-gradient-to-br from-[#111827] to-[#0d1117]">
-        <div className="flex items-center gap-6">
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
           {/* Savings ring */}
           <div className="relative w-24 h-24 shrink-0">
             <svg viewBox="0 0 96 96" className="w-full h-full -rotate-90">
@@ -41,8 +41,8 @@ export function CostsView({ data }: Props) {
             <p className="text-xs text-gray-500 mt-1">${annual.toFixed(0)}/year if not fixed</p>
           </div>
 
-          <div className="text-right shrink-0">
-            <div className="flex items-center gap-1.5 text-emerald-400 text-sm font-medium">
+          <div className="text-center sm:text-right shrink-0">
+            <div className="flex items-center gap-1.5 text-emerald-400 text-sm font-medium justify-center sm:justify-end">
               <TrendingDown size={14} />
               <span>Save ${total.toFixed(0)}/mo</span>
             </div>

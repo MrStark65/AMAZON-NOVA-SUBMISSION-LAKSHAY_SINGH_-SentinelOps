@@ -109,7 +109,7 @@ export function AgentView({ scanData, onRescan }: Props) {
       )}
 
       {/* Task Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {Object.entries(TASK_LABELS).map(([taskType, meta]) => {
           const result  = results[taskType];
           const isFixed = result?.status === "completed" || result?.status === "planned";

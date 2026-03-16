@@ -47,7 +47,7 @@ export function AssistantView({ scanData }: Props) {
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-140px)]">
+    <div className="flex flex-col h-[calc(100dvh-120px)] md:h-[calc(100vh-140px)]">
       {/* Messages */}
       <div className="flex-1 overflow-y-auto space-y-4 pr-1 mb-4">
         {messages.map((m, i) => (

@@ -74,22 +74,22 @@ export default function Home() {
 
       <main className="flex-1 flex flex-col min-w-0">
         {/* Header */}
-        <header className="sticky top-0 z-10 flex items-center justify-between px-6 py-3.5 border-b border-gray-800/80 bg-[#0a0e1a]/90 backdrop-blur-md">
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-sm font-semibold text-gray-100">{VIEW_TITLES[view]}</h1>
+        <header className="sticky top-0 z-10 flex items-center justify-between pl-12 md:pl-6 pr-4 md:pr-6 py-3 md:py-3.5 border-b border-gray-800/80 bg-[#0a0e1a]/90 backdrop-blur-md gap-3">
+          <div className="min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h1 className="text-sm font-semibold text-gray-100 truncate">{VIEW_TITLES[view]}</h1>
               {scanData && criticalCount > 0 && (
-                <span className="text-[10px] bg-red-500/20 text-red-400 border border-red-500/30 px-1.5 py-0.5 rounded-full pulse-red">
+                <span className="text-[10px] bg-red-500/20 text-red-400 border border-red-500/30 px-1.5 py-0.5 rounded-full pulse-red shrink-0">
                   {criticalCount} critical
                 </span>
               )}
             </div>
-            <p className="text-[10px] text-gray-600 mt-0.5">{VIEW_SUBTITLES[view]}</p>
+            <p className="text-[10px] text-gray-600 mt-0.5 hidden sm:block">{VIEW_SUBTITLES[view]}</p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4 shrink-0">
             <LiveClock />
             {scanData && (
-              <div className="flex items-center gap-1.5 text-[10px] text-gray-600">
+              <div className="hidden sm:flex items-center gap-1.5 text-[10px] text-gray-600">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 Last scan: {new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
               </div>
@@ -99,7 +99,7 @@ export default function Home() {
         </header>
 
         {/* Content */}
-        <div className="flex-1 p-5 overflow-y-auto">
+        <div className="flex-1 p-3 sm:p-4 md:p-5 overflow-y-auto">
           {error && (
             <div className="mb-4 px-4 py-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0" />

@@ -28,7 +28,7 @@ export function InfrastructureView({ data }: Props) {
   return (
     <div className="space-y-4">
       {/* Summary bar */}
-      <div className="flex items-center gap-4 px-4 py-2.5 rounded-lg bg-gray-800/30 border border-gray-800/60 text-xs">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-4 px-4 py-2.5 rounded-lg bg-gray-800/30 border border-gray-800/60 text-xs">
         <span className="text-gray-500">{data.nodes.length} nodes scanned</span>
         <span className="text-gray-700">·</span>
         <span className="flex items-center gap-1.5 text-emerald-400"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />{counts.healthy} healthy</span>
@@ -36,7 +36,7 @@ export function InfrastructureView({ data }: Props) {
         <span className="flex items-center gap-1.5 text-red-400"><span className="w-1.5 h-1.5 rounded-full bg-red-400" />{counts.critical} critical</span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 stagger">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 stagger">
         {data.nodes.map((node) => (
           <Card key={node.id}
             glow={node.status === "critical" ? "red" : node.status === "warning" ? undefined : "green"}

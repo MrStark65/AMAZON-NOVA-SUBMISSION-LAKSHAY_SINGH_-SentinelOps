@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { clsx } from "clsx";
 import {
   LayoutDashboard, Server, AlertTriangle, ShieldAlert,
-  DollarSign, Bot, Activity, Mic, Zap, ChevronRight
+  DollarSign, Bot, Activity, Mic, Zap, ChevronRight, Menu, X
 } from "lucide-react";
 
 export type View = "dashboard" | "infrastructure" | "predictions" | "security" | "costs" | "assistant" | "voice" | "agent";
@@ -44,16 +44,15 @@ interface SidebarProps {
   criticalCount?: number;
 }
 
-export function Sidebar({ active, onChange, criticalCount = 0 }: SidebarProps) {
+function SidebarContent({ active, onChange, criticalCount = 0, onClose }: SidebarProps & { onClose?: () => void }) {
   return (
-    <aside suppressHydrationWarning className="w-56 shrink-0 flex flex-col bg-[#0d1117] border-r border-gray-800/80 h-screen sticky top-0">
+    <div className="flex flex-col h-full">
       {/* Logo */}
       <div className="flex items-center gap-2.5 px-4 py-4 border-b border-gray-800/80">
         <div className="relative">
           <div className="w-7 h-7 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
             <Activity size={14} className="text-blue-400" />
           </div>
-          {/* Live indicator */}
           <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 pulse-dot" />
         </div>
         <div>
@@ -63,6 +62,11 @@ export function Sidebar({ active, onChange, criticalCount = 0 }: SidebarProps) {
         <span className="ml-auto text-[9px] bg-blue-500/20 text-blue-400 border border-blue-500/30 px-1.5 py-0.5 rounded-full font-medium">
           LIVE
         </span>
+        {onClose && (
+          <button onClick={onClose} className="ml-2 p-1 rounded text-gray-500 hover:text-gray-300">
+            <X size={16} />
+          </button>
+        )}
       </div>
 
       {/* Nav */}
@@ -79,7 +83,7 @@ export function Sidebar({ active, onChange, criticalCount = 0 }: SidebarProps) {
                 return (
                   <button
                     key={item.id}
-                    onClick={() => onChange(item.id)}
+                    onClick={() => { onChange(item.id); onClose?.(); }}
                     className={clsx(
                       "w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs transition-all duration-150 group",
                       isActive
@@ -111,6 +115,51 @@ export function Sidebar({ active, onChange, criticalCount = 0 }: SidebarProps) {
         </div>
         <p className="text-[10px] text-gray-700 mt-1">v1.0.0 · Hackathon Demo</p>
       </div>
-    </aside>
+    </div>
+  );
+}
+
+export function Sidebar({ active, onChange, criticalCount = 0 }: SidebarProps) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <>
+      {/* Desktop sidebar */}
+      <aside
+        suppressHydrationWarning
+        className="hidden md:flex w-56 shrink-0 flex-col bg-[#0d1117] border-r border-gray-800/80 h-screen sticky top-0"
+      >
+        <SidebarContent active={active} onChange={onChange} criticalCount={criticalCount} />
+      </aside>
+
+      {/* Mobile hamburger button */}
+      <button
+        onClick={() => setMobileOpen(true)}
+        className="md:hidden fixed top-3 left-3 z-50 p-2 rounded-lg bg-[#0d1117] border border-gray-800 text-gray-400 hover:text-gray-200"
+        aria-label="Open menu"
+      >
+        <Menu size={18} />
+      </button>
+
+      {/* Mobile drawer overlay */}
+      {mobileOpen && (
+        <div className="md:hidden fixed inset-0 z-50 flex">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setMobileOpen(false)}
+          />
+          {/* Drawer */}
+          <aside className="relative w-64 bg-[#0d1117] border-r border-gray-800/80 h-full flex flex-col z-10">
+            <SidebarContent
+              active={active}
+              onChange={onChange}
+              criticalCount={criticalCount}
+              onClose={() => setMobileOpen(false)}
+            />
+          </aside>
+        </div>
+      )}
+    </>
   );
 }
