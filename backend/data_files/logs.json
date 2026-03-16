@@ -1,0 +1,14 @@
+{
+  "logs": [
+    { "timestamp": "2026-03-16T08:12:33Z", "service": "payment-service",     "level": "ERROR",   "message": "OutOfMemoryError: Java heap space exceeded" },
+    { "timestamp": "2026-03-16T08:14:01Z", "service": "payment-service",     "level": "ERROR",   "message": "GC overhead limit exceeded, memory usage at 88%" },
+    { "timestamp": "2026-03-16T09:01:22Z", "service": "ml-inference-server", "level": "ERROR",   "message": "CUDA out of memory. Tried to allocate 2.5GB" },
+    { "timestamp": "2026-03-16T09:15:44Z", "service": "notification-worker", "level": "WARN",    "message": "Message queue depth exceeding threshold: 45000 messages" },
+    { "timestamp": "2026-03-16T10:22:11Z", "service": "data-pipeline",       "level": "WARN",    "message": "Disk usage at 82%, approaching critical threshold" },
+    { "timestamp": "2026-03-16T10:45:00Z", "service": "api-gateway-prod",    "level": "INFO",    "message": "Request rate: 12400 req/min, within normal range" },
+    { "timestamp": "2026-03-16T11:03:17Z", "service": "payment-service",     "level": "ERROR",   "message": "Connection pool exhausted: 500/500 connections in use" },
+    { "timestamp": "2026-03-16T11:30:55Z", "service": "log-aggregator",      "level": "WARN",    "message": "Disk at 88%, log rotation may fail" },
+    { "timestamp": "2026-03-16T12:00:00Z", "service": "auth-service",        "level": "INFO",    "message": "Token validation latency: 12ms avg" },
+    { "timestamp": "2026-03-16T12:15:33Z", "service": "ml-inference-server", "level": "ERROR",   "message": "Model inference timeout after 30s, killing worker" }
+  ]
+}

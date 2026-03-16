@@ -5,7 +5,7 @@ In production this would connect to real cloud APIs (AWS CloudWatch, Datadog, et
 import json
 from pathlib import Path
 
-DATA_DIR = Path(__file__).parent.parent.parent / "data"
+DATA_DIR = Path(__file__).parent.parent / "data_files"
 
 
 def load_metrics():

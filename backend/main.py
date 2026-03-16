@@ -12,7 +12,7 @@ import os
 load_dotenv()
 
 # ── Reset demo state on every startup ────────────────────────────────────────
-STATE_FILE = Path(__file__).parent.parent / "data" / "agent_state.json"
+STATE_FILE = Path(__file__).parent / "data_files" / "agent_state.json"
 DEFAULT_STATE = {"fixed_tasks": [], "fixed_nodes": [], "fixed_risks": [], "agent_log": []}
 STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
 with open(STATE_FILE, "w") as f:

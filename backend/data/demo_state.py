@@ -7,7 +7,7 @@ State is saved to a JSON file so it survives server restarts.
 import json
 from pathlib import Path
 
-STATE_FILE = Path(__file__).parent.parent.parent / "data" / "agent_state.json"
+STATE_FILE = Path(__file__).parent.parent / "data_files" / "agent_state.json"
 
 DEFAULT_STATE = {
     "fixed_tasks": [],       # list of completed task_type strings

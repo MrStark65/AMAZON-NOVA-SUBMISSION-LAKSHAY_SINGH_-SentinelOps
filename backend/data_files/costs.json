@@ -1,0 +1,39 @@
+{
+  "waste": [
+    {
+      "resource": "i-0a1b2c3d (m5.2xlarge)",
+      "type": "EC2 Instance",
+      "idleDays": 14,
+      "monthlyCost": 280,
+      "recommendation": "Terminate or downsize to t3.medium — CPU avg < 3% for 2 weeks"
+    },
+    {
+      "resource": "i-0e5f6a7b (c5.xlarge)",
+      "type": "EC2 Instance",
+      "idleDays": 21,
+      "monthlyCost": 140,
+      "recommendation": "Terminate — no traffic detected since March 1st"
+    },
+    {
+      "resource": "rds-staging-db",
+      "type": "RDS Instance",
+      "idleDays": 30,
+      "monthlyCost": 210,
+      "recommendation": "Stop staging DB outside business hours — save ~70%"
+    },
+    {
+      "resource": "nat-gateway-us-east-1b",
+      "type": "NAT Gateway",
+      "idleDays": 45,
+      "monthlyCost": 95,
+      "recommendation": "Remove unused NAT gateway in us-east-1b AZ"
+    },
+    {
+      "resource": "ebs-vol-0x9y8z (500GB gp2)",
+      "type": "EBS Volume",
+      "idleDays": 60,
+      "monthlyCost": 50,
+      "recommendation": "Detached volume — snapshot and delete to save $50/mo"
+    }
+  ]
+}
